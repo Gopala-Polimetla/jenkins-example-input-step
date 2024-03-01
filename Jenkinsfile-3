@@ -20,6 +20,7 @@ pipeline {
           echo "Good Morning, $firstName"
         }
         sh '''
+          sleep 20
           hostname
         '''
       }
