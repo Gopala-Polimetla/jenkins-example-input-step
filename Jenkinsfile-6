@@ -10,13 +10,11 @@ pipeline {
                string(defaultValue: 'Dave', name: 'FIRST_NAME', trim: true)
                string(defaultValue: '', description: 'Custom abort message', name: 'ABORT_MESSAGE', trim: true)
             }
-            // Custom abort message
-            submitterParameter('ABORT_MESSAGE', '')
          }
          steps {
             script {
-               if (ABORT_MESSAGE) {
-                  echo "Pipeline aborted with message: ${ABORT_MESSAGE}"
+               if (env.ABORT_MESSAGE) {
+                  echo "Pipeline aborted with message: ${env.ABORT_MESSAGE}"
                   currentBuild.result = 'ABORTED'
                   error("Pipeline aborted by user with custom message.")
                } else {
