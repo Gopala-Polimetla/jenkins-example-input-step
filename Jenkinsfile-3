@@ -18,11 +18,8 @@ pipeline {
       steps {
         script {
           echo "Good Morning, $firstName"
+          sh "bash display.sh $firstName"
         }
-        sh '''
-          sleep 20
-          hostname
-        '''
       }
     }
   }
